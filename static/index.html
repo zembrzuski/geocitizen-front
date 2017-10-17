@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+
+      #map {
+        height: 100%;
+        width: 100%;
+      }
+
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: "ubuntu";
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <script src="http://127.0.0.1:5000/get_file/jquery.js"></script>
+
+    <script>
+
+      function plota(track_id) {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+
+        var cao = $.get('http://127.0.0.1:5000/proxy_pass?path=track/by-id/' + track_id, function(data) {
+
+          coordinates = data['coordinates'];
+
+          var myPath = new google.maps.Polyline({
+            path: coordinates,
+            strokeColor: 'red',
+            strokeOpacity: 0.8,
+            strokeWeight: 5
+          });
+
+          myPath.setMap(map);
+        });
+
+      }
+
+      function plotaUser(user_id) {
+        var uluru = {lat: -25.363, lng: 131.044};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 4,
+          center: uluru
+        });
+
+        var cao = $.get('http://127.0.0.1:5000/proxy_pass?path=user/by-user-id/' + user_id, function(data) {
+
+          paths = data['paths'];
+
+          for(x = 0 ; x < paths.length; x++) {
+            var myPath = new google.maps.Polyline({
+              path: paths[x]['coordinates'],
+              strokeColor: 'black',
+              strokeOpacity: 0.1,
+              strokeWeight: 5
+            });
+
+            myPath.setMap(map);
+          }
+
+        });
+
+      }
+
+      function initMap() {
+          if (location.pathname.startsWith("/map/")) {
+            var track_id = location.pathname.split("/map/")[1];
+            plota(track_id);
+          } 
+          
+          location.pathname.startsWith("/user/")
+          var user_id = location.pathname.split("/user/")[1];
+          plotaUser(user_id);
+      }
+    </script>
+
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDehTfquJd2bxKy3kHRbZ-Ml23aP4YZfd8&callback=initMap" async defer></script>    
+    </script>
+
+  </body>
+</html>
