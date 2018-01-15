@@ -2,10 +2,9 @@
 <html>
   <head>
     <style>
-
       #map {
         height: 100%;
-        width: 100%;
+        width: 90%;
       }
 
       html, body {
@@ -15,10 +14,21 @@
         font-family: "ubuntu";
       }
 
+      .right {
+        position : absolute;
+        top:0;
+        right:0;
+        background: orange;
+        width: 250px;    
+        height: 100%;
+      }
+
     </style>
   </head>
   <body>
-    <div id="map"></div>
+
+    <div id="map"></div>  
+    <div class="right">xoxoxo</div>
 
     <script src="http://127.0.0.1:5000/get_file/jquery.js"></script>
 
@@ -33,7 +43,7 @@
 
         var cao = $.get('http://127.0.0.1:5000/proxy_pass?path=track/by-id/' + track_id, function(data) {
 
-          coordinates = data['coordinates'];
+          coordinates = data['points'];
 
           var myPath = new google.maps.Polyline({
             path: coordinates,
@@ -60,7 +70,7 @@
 
           for(x = 0 ; x < paths.length; x++) {
             var myPath = new google.maps.Polyline({
-              path: paths[x]['coordinates'],
+              path: paths[x]['points'],
               strokeColor: 'black',
               strokeOpacity: 0.1,
               strokeWeight: 5
