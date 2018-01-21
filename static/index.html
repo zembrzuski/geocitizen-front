@@ -65,10 +65,20 @@
         });
 
         var cao = $.get('http://127.0.0.1:5000/proxy_pass?path=user/by-user-id/' + user_id, function(data) {
+        //var cao = $.get('http://127.0.0.1:5000/proxy_pass?path=user/by-user-id-and-hour-of-day/011/22/24', function(data) {
 
           paths = data['paths'];
 
+          var menuEsquerdaItems = []
+
           for(x = 0 ; x < paths.length; x++) {
+            
+            var menuEsquerdaItem = Object()
+            menuEsquerdaItem.id = paths[x]['id']
+            menuEsquerdaItem.inicio = paths[x]['firstTimestamp']
+            menuEsquerdaItem.fim = paths[x]['lastTimestamp']
+            menuEsquerdaItems = menuEsquerdaItems.concat(menuEsquerdaItem)
+            
             var myPath = new google.maps.Polyline({
               path: paths[x]['points'],
               strokeColor: 'black',
@@ -78,6 +88,13 @@
 
             myPath.setMap(map);
           }
+
+          var stringao = ""
+          for(x = 0 ; x < menuEsquerdaItems.length; x++) {
+            xx = menuEsquerdaItems[x]
+            stringao += xx['inicio'] + "<br/>"
+          }
+          $(".right").html(stringao);
 
         });
 
