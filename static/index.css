@@ -1,0 +1,20 @@
+#map {
+  height: 100%;
+  width: 90%;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: "ubuntu";
+}
+
+.right {
+  position : absolute;
+  top:0;
+  right:0;
+  background: orange;
+  width: 250px;
+  height: 100%;
+}
