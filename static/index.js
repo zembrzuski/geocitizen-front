@@ -41,7 +41,7 @@ function desenhaTrackIdsNoCantoEsquerdo(paths) {
       </div>
     `
 
-    $(".right").append(html_to_append);
+    $("#right_form").append(html_to_append);
   }
 }
 
@@ -74,3 +74,11 @@ function initMap() {
     var user_id = location.pathname.split("/user/")[1];
     plotaUser(user_id);
 }
+
+
+$(document).ready(function() {
+   $('#right_form').on('change', 'input[type=checkbox]', function(e) {
+      //console.log(this.name+' '+this.value+' '+this.checked);
+      alert('deu');
+    });
+});
