@@ -79,6 +79,17 @@ function initMap() {
   );
 }
 
+// TODO renomear isso
+function checkboxBehavior(checkboxInfo, single_user_data, map, polylines) {
+  path_id = checkboxInfo.value;
+
+  if (checkboxInfo.checked) {
+    plotaUmTrack(single_user_data['paths'], path_id, map, polylines);
+  } else {
+    removeUmTrack(path_id, polylines)
+  }
+}
+
 /**
   * Estado
   */
@@ -90,8 +101,7 @@ var single_user_data = null;
   * Listeners
   */
 $(document).ready(function() {
-   $('#right_form').on('change', 'input[type=checkbox]', function(e) {
-      path_id = this.value;
-      plotaUmTrack(single_user_data['paths'], path_id, mmmap, polylines);
-    });
+  $('#right_form').on('change', 'input[type=checkbox]', function(e) {
+    checkboxBehavior(this, single_user_data, mmmap, polylines);
+  });
 });
