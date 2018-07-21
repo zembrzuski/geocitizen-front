@@ -2,7 +2,7 @@
   * Funções belas
   */
 
-function createPath(coordinates, strokeColor, strokeOpacity, strokeWeight) {
+function createPolyline(coordinates, strokeColor, strokeOpacity, strokeWeight) {
   return new google.maps.Polyline({
     path: coordinates,
     strokeColor: strokeColor,
@@ -23,14 +23,17 @@ function find_path_by_id(all_paths, path_id) {
   throw "could not find a path";  
 }
 
-function plotaPath(map, data_points) {
-  var myPath = createPath(data_points, 'red', 0.8, 5);
-  myPath.setMap(map);
+function plotaUmTrack(all_paths, path_id, map, polylines) {
+  var path = find_path_by_id(all_paths, path_id);
+  var myPolyline = createPolyline(path['points'], 'red', 0.8, 5);
+  polylines[path_id] = myPolyline;
+  myPolyline.setMap(map);
 }
 
-function plotaUmTrack(all_paths, path_id) {
-  var path = find_path_by_id(all_paths, path_id);
-  plotaPath(mmmap, path['points']);
+function removeUmTrack(path_id, polylines) {
+  var myPolyline = polylines[path_id];
+  myPolyline.setMap(null);
+  delete polylines[path_id];
 }
 
 function desenhaTrackIdsNoCantoEsquerdo(paths) {
@@ -80,6 +83,7 @@ function initMap() {
   * Estado
   */
 var mmmap = null;
+var polylines = {};
 var single_user_data = null;
 
 /**
@@ -88,6 +92,6 @@ var single_user_data = null;
 $(document).ready(function() {
    $('#right_form').on('change', 'input[type=checkbox]', function(e) {
       path_id = this.value;
-      plotaUmTrack(single_user_data['paths'], path_id);
+      plotaUmTrack(single_user_data['paths'], path_id, mmmap, polylines);
     });
 });
