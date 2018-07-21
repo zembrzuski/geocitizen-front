@@ -1,6 +1,7 @@
 TODO
 
-- fazer check/uncheck no menu da esquerda
+- check do menu da esquerda está feito.
+- tenho que fazer o uncheck
 - plotar cada um dos tipos de transporte com sua respectiva cor
 - plotar, globalmente (isto é, vendo todos os usuários) os pontos de troca
   de transporte. Com isso, vou poder achar paradas de onibus, aeroportos

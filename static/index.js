@@ -28,12 +28,10 @@ function plotaPath(map, data_points) {
   myPath.setMap(map);
 }
 
-
 function plotaUmTrack(all_paths, path_id) {
   var path = find_path_by_id(all_paths, path_id);
   plotaPath(mmmap, path['points']);
 }
-
 
 function desenhaTrackIdsNoCantoEsquerdo(paths) {
   for(x = 0 ; x < paths.length; x++) {
@@ -77,7 +75,6 @@ function initMap() {
     function(data) {initMapCallback(data, mmmap);}
   );
 }
-
 
 /**
   * Estado
