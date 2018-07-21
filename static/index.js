@@ -25,12 +25,21 @@ function desenhaTrackIdsNoCantoEsquerdo(paths) {
     current_path = paths[x]
     current_path_id = current_path['id']
 
+    dia_da_semana = current_path['firstTimestamp']['diaDaSemana']
+    hora = current_path['firstTimestamp']['hora']
+    dia_hora = dia_da_semana + ' ~~' + hora + ':00'
+
     html_to_append = `
       <div>
-        <input type="checkbox" id="` + current_path_id + `" name="` + current_path_id + `" value="` + current_path_id + `">
-        <label for="` + current_path_id + `">` + current_path_id + `</label>
+        <input 
+          type="checkbox" id="` + current_path_id + `" 
+          name="` + current_path_id + `" 
+          value="` + dia_hora + `" 
+          checked
+        >
+        <label for="` + current_path_id + `">` + dia_hora + `</label>
       </div>
-      `
+    `
 
     $(".right").append(html_to_append);
   }
