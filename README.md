@@ -1,5 +1,11 @@
 TODO
 
+- fazer check/uncheck no menu da esquerda
+- plotar cada um dos tipos de transporte com sua respectiva cor
+- plotar, globalmente (isto é, vendo todos os usuários) os pontos de troca
+  de transporte. Com isso, vou poder achar paradas de onibus, aeroportos
+  e outras coisas
+
 - fazer alguma parada de interação para que fique facil para o usuario
   achar relações.
 	- mostrar um menu com trajetorias e opção de toggle.
