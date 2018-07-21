@@ -11,6 +11,30 @@ function createPath(coordinates, strokeColor, strokeOpacity, strokeWeight) {
   });
 }
 
+function find_path_by_id(all_paths, path_id) {
+  for(x = 0 ; x < all_paths.length; x++) {
+    current_path = all_paths[x]
+
+    if (current_path['id'] == path_id) {
+      return current_path
+    }
+  }
+
+  throw "could not find a path";  
+}
+
+function plotaPath(map, data_points) {
+  var myPath = createPath(data_points, 'red', 0.8, 5);
+  myPath.setMap(map);
+}
+
+
+function plotaUmTrack(all_paths, path_id) {
+  var path = find_path_by_id(all_paths, path_id);
+  plotaPath(mmmap, path['points']);
+}
+
+
 function desenhaTrackIdsNoCantoEsquerdo(paths) {
   for(x = 0 ; x < paths.length; x++) {
     current_path = paths[x]
@@ -66,8 +90,7 @@ var single_user_data = null;
   */
 $(document).ready(function() {
    $('#right_form').on('change', 'input[type=checkbox]', function(e) {
-      //console.log(this.name+' '+this.value+' '+this.checked);
       path_id = this.value;
-      alert(path_id);
+      plotaUmTrack(single_user_data['paths'], path_id);
     });
 });
