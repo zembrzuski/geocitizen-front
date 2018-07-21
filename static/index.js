@@ -1,3 +1,7 @@
+/**
+  * Funções belas
+  */
+
 function createPath(coordinates, strokeColor, strokeOpacity, strokeWeight) {
   return new google.maps.Polyline({
     path: coordinates,
@@ -76,6 +80,14 @@ function initMap() {
 }
 
 
+/**
+  * Estado
+  */
+
+
+/**
+  * Listeners
+  */
 $(document).ready(function() {
    $('#right_form').on('change', 'input[type=checkbox]', function(e) {
       //console.log(this.name+' '+this.value+' '+this.checked);
