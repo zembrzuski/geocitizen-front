@@ -20,12 +20,33 @@ function plotaTrack(track_id) {
   });
 }
 
-function plotaUserCallback(data, map) {
+function desenhaTrackIdsNoCantoEsquerdo(paths) {
+  for(x = 0 ; x < paths.length; x++) {
+    current_path = paths[x]
+    current_path_id = current_path['id']
+
+    html_to_append = `
+      <div>
+        <input type="checkbox" id="` + current_path_id + `" name="` + current_path_id + `" value="` + current_path_id + `">
+        <label for="` + current_path_id + `">` + current_path_id + `</label>
+      </div>
+      `
+
+    $(".right").append(html_to_append);
+  }
+}
+
+function plotaTodosTracksDeUmUsuario(data, map) {
   paths = data['paths'];
 
   for(x = 0 ; x < paths.length; x++) {
     createPath(paths[x]['points'], 'black', 0.1, 5).setMap(map);
   }
+}
+
+function plotaUserCallback(data, map) {
+  plotaTodosTracksDeUmUsuario(data, map);
+  desenhaTrackIdsNoCantoEsquerdo(paths);
 }
 
 function plotaUser(user_id) {
@@ -41,12 +62,6 @@ function plotaUser(user_id) {
 }
 
 function initMap() {
-    if (location.pathname.startsWith("/map/")) {
-      var track_id = location.pathname.split("/map/")[1];
-      plotaTrack(track_id);
-    }
-
-    location.pathname.startsWith("/user/")
     var user_id = location.pathname.split("/user/")[1];
     plotaUser(user_id);
 }
