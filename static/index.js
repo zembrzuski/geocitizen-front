@@ -43,7 +43,7 @@ function desenhaTrackIdsNoCantoEsquerdo(paths) {
 
     dia_da_semana = current_path['firstTimestamp']['diaDaSemana']
     hora = current_path['firstTimestamp']['hora']
-    dia_hora = dia_da_semana + ' ~~' + hora + ':00'
+    dia_hora = dia_da_semana + ' ~~' + hora + ':00 => ' + current_path_id
 
     html_to_append = `
       <div>
