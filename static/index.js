@@ -79,7 +79,6 @@ function initMap() {
   );
 }
 
-// TODO renomear isso
 function checkboxBehavior(checkboxInfo, single_user_data, map, polylines) {
   path_id = checkboxInfo.value;
 
