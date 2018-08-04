@@ -10,11 +10,12 @@ COMO RODAR ISSO
 TODO-LIST
 =========
 
-- tenho que fazer o uncheck
-- plotar cada um dos tipos de transporte com sua respectiva cor
+- pensar em algum algoritmo para similiaridade de paths
 - plotar, globalmente (isto é, vendo todos os usuários) os pontos de troca
   de transporte. Com isso, vou poder achar paradas de onibus, aeroportos
   e outras coisas
+- plotar cada um dos tipos de transporte com sua respectiva cor
+- tenho que fazer o uncheck (remover do mapa quando eu fizer uncheck no menu da direita)
 
 - fazer alguma parada de interação para que fique facil para o usuario
   achar relações.
