@@ -1,6 +1,15 @@
-TODO
 
-- check do menu da esquerda está feito.
+COMO RODAR ISSO
+===============
+
+1 - dê o comando `source bin/activate`
+2 - dê o comando `python main.py`
+3 - vá no browser e chame `http://127.0.0.1:5000/user/001`
+
+
+TODO-LIST
+=========
+
 - tenho que fazer o uncheck
 - plotar cada um dos tipos de transporte com sua respectiva cor
 - plotar, globalmente (isto é, vendo todos os usuários) os pontos de troca
